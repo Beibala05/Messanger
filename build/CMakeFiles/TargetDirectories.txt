@@ -1,0 +1,4 @@
+/home/beibala/Messanger/build/CMakeFiles/Messanger.dir
+/home/beibala/Messanger/build/CMakeFiles/edit_cache.dir
+/home/beibala/Messanger/build/CMakeFiles/rebuild_cache.dir
+/home/beibala/Messanger/build/CMakeFiles/Messanger_autogen.dir
