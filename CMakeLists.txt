@@ -15,12 +15,14 @@ set(SOURCES
     src/main.cpp
     src/main_window.cpp
     src/messanger.cpp
+    src/client.cpp
 )
 
 set(HEADERS
     src/main_window.h
     src/style.h
     src/messanger.h
+    src/client.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})

@@ -1,6 +1,8 @@
 #ifndef MAIN_WINDOW
 #define MAIN_WINDOW
 
+#define DEBUG
+
 #include "style.h"
 #include "messanger.h"
 
@@ -27,7 +29,8 @@ public:
     ~MainWindow(); 
 
 public:
-    QString getTextEdit() const;
+    QString getTextEdit()    const;
+    QString getTextBrowser() const;
     void clearTextEdit();
     void setTextBrowser(QString text);
 

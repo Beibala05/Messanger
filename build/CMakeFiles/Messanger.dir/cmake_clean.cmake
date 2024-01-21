@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "Messanger_autogen"
   "CMakeFiles/Messanger.dir/Messanger_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/Messanger.dir/Messanger_autogen/mocs_compilation.cpp.o.d"
+  "CMakeFiles/Messanger.dir/src/client.cpp.o"
+  "CMakeFiles/Messanger.dir/src/client.cpp.o.d"
   "CMakeFiles/Messanger.dir/src/main.cpp.o"
   "CMakeFiles/Messanger.dir/src/main.cpp.o.d"
   "CMakeFiles/Messanger.dir/src/main_window.cpp.o"

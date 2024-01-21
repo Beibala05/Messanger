@@ -5,3 +5,5 @@
 /home/beibala/Messanger/src/main_window.cpp
 /home/beibala/Messanger/src/messanger.h
 /home/beibala/Messanger/src/messanger.cpp
+/home/beibala/Messanger/src/client.cpp
+/home/beibala/Messanger/src/client.h

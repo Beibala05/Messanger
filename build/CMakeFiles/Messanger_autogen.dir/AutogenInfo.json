@@ -76,6 +76,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/beibala/Messanger/src/client.h",
+			"Mu",
+			"UVLADIE3JM/moc_client.cpp",
+			null
+		],
+		[
 			"/home/beibala/Messanger/src/main_window.h",
 			"Mu",
 			"UVLADIE3JM/moc_main_window.cpp",
@@ -153,6 +159,7 @@
 	"SETTINGS_FILE" : "/home/beibala/Messanger/build/CMakeFiles/Messanger_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/beibala/Messanger/src/client.cpp", "Mu", null ],
 		[ "/home/beibala/Messanger/src/main.cpp", "Mu", null ],
 		[ "/home/beibala/Messanger/src/main_window.cpp", "Mu", null ],
 		[ "/home/beibala/Messanger/src/messanger.cpp", "Mu", null ]

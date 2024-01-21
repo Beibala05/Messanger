@@ -57,6 +57,11 @@ QString MainWindow::getTextEdit() const
     return textEdit->text();
 }
 
+QString MainWindow::getTextBrowser() const
+{
+    return textBrowser->toPlainText();
+}
+
 void MainWindow::clearTextEdit()
 {
     this->textEdit->clear();

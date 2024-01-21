@@ -166,6 +166,30 @@ Messanger_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Messanger.dir/build.make CMakeFiles/Messanger.dir/Messanger_autogen/mocs_compilation.cpp.s
 .PHONY : Messanger_autogen/mocs_compilation.cpp.s
 
+src/client.o: src/client.cpp.o
+.PHONY : src/client.o
+
+# target to build an object file
+src/client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Messanger.dir/build.make CMakeFiles/Messanger.dir/src/client.cpp.o
+.PHONY : src/client.cpp.o
+
+src/client.i: src/client.cpp.i
+.PHONY : src/client.i
+
+# target to preprocess a source file
+src/client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Messanger.dir/build.make CMakeFiles/Messanger.dir/src/client.cpp.i
+.PHONY : src/client.cpp.i
+
+src/client.s: src/client.cpp.s
+.PHONY : src/client.s
+
+# target to generate assembly for a file
+src/client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Messanger.dir/build.make CMakeFiles/Messanger.dir/src/client.cpp.s
+.PHONY : src/client.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -251,6 +275,9 @@ help:
 	@echo "... Messanger_autogen/mocs_compilation.o"
 	@echo "... Messanger_autogen/mocs_compilation.i"
 	@echo "... Messanger_autogen/mocs_compilation.s"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
