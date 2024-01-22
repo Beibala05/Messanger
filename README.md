@@ -11,10 +11,10 @@
 > mkdir Project && cd Project
 
 2. Склонируйте туда репизиторий с **GitHub**
-> git clone https://github.com/Beibala05/Nodes.git
+> git clone https://github.com/Beibala05/Messanger.git
 
 3. Создайте папку build
 > mkdir build
 
 4.Соберите проект с помощью **CMake**
-> cmake -B build
+> cmake -B build 
