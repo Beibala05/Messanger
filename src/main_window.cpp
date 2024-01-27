@@ -4,11 +4,26 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
     mes = new Messanger(this);
 
+    QFile file(CHECK_USER_NAME_FILE_PATH);
+    
+    file.open(QIODevice::ReadOnly);
+
+    if (file.size() == 0)
+    {
+        Messanger::userName = "user";
+    }
+    else
+    {
+        Messanger::userName = file.readLine();
+    }
+
+    file.close();
+
     central_widget = new QWidget(this);
     this->setCentralWidget(central_widget);
     this->setMinimumSize(MAIN_WINDOW_WIDTH / 4, MAIN_WINDOW_HEIGHT / 4);
     this->setStyleSheet(styles::main_window_style);
-    this->setWindowTitle("Simple Messanger by C++");
+    this->setWindowTitle("Простой мессенджер на C++");
 
     textBrowser = new QTextBrowser(central_widget);
     textBrowser->setGeometry(5, 5, MAIN_WINDOW_WIDTH - 10, MAIN_WINDOW_HEIGHT - 60);
@@ -38,8 +53,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent* event)
 {
-    delete this;
+    QFile file(CHECK_USER_NAME_FILE_PATH);
 
+    file.open(QIODevice::WriteOnly);
+    file.write(Messanger::userName.toUtf8());
+    file.close();
+
+    delete this;
     QMainWindow::closeEvent(event);
 }
 

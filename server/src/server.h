@@ -8,23 +8,26 @@
 #include <QString>
 #include <QVector>
 
+#define DEBUG_OFF
+
 class Server : public QTcpServer 
 {
 public:
     Server(QObject *parent = nullptr);
 
 public:
-    bool startServer();
-    void sendToClient(const QByteArray& message);
+    bool                    startServer();
 
 protected:
-    void incomingConnection(qintptr socketDescriptor) override;
+    void                    incomingConnection(qintptr socketDescriptor) override;
 
 private:
-    QTcpSocket*      clientConnection;
+    QTcpSocket*             clientConnection;
+    QVector<QTcpSocket*>    clients;
 
 private slots:
-    void onReadyRead();
+    void                    onReadyRead();
+    void                    onClientDisconnected();
 };
 
 #endif // SERVER

@@ -1,8 +1,6 @@
 #ifndef MAIN_WINDOW
 #define MAIN_WINDOW
 
-#define DEBUG
-
 #include "style.h"
 #include "messanger.h"
 
@@ -16,9 +14,12 @@
 #include <QCloseEvent>
 #include <QDebug>
 #include <QObject>
+#include <QFile>
+#include <QTextStream>
 
-#define MAIN_WINDOW_WIDTH  1200
-#define MAIN_WINDOW_HEIGHT 800
+#define MAIN_WINDOW_WIDTH           1200
+#define MAIN_WINDOW_HEIGHT          800
+#define CHECK_USER_NAME_FILE_PATH   "../../Messanger/data/checkUserName.txt"
 
 class Messanger;
 
@@ -29,14 +30,14 @@ public:
     ~MainWindow(); 
 
 public:
-    QString getTextEdit()    const;
-    QString getTextBrowser() const;
-    void clearTextEdit();
-    void setTextBrowser(QString text);
+    QString         getTextEdit()    const;
+    QString         getTextBrowser() const;
+    void            clearTextEdit();
+    void            setTextBrowser(QString text);
 
 protected:
-    void resizeEvent(QResizeEvent* event) override;
-    void closeEvent(QCloseEvent* event)   override;
+    void            resizeEvent(QResizeEvent* event) override;
+    void            closeEvent(QCloseEvent* event)   override;
 
 private:
     QWidget*        central_widget;

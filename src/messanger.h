@@ -17,11 +17,19 @@ public:
     ~Messanger();
 
 public slots:
-    void sendMessageToBrowserSlot();
+    void                sendMessageToBrowserSlot();
+
+public:
+    static QString      userName;
 
 private:
-    MainWindow* win;
-    Client*     client;
+    QString             messageToServer(QString textFromEdit);
+    void                parseMessage(QString& otherName, QString& ans);
+
+private:
+    QWidget*            informationWidget;
+    MainWindow*         win;
+    Client*             client;
 };
 
 #endif // MESSANGER

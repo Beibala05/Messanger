@@ -9,8 +9,8 @@
 class Client : public QObject 
 {
 public:
-    Client();
-    ~Client();
+  Client();
+  ~Client();
 
 public:
   bool sendMessage(const QString& message);
