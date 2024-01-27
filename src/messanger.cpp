@@ -8,6 +8,13 @@ Messanger::Messanger(MainWindow* win)
     client = new Client();
     informationWidget = new QWidget();
     client->connect(); 
+
+    QMessageBox::information(informationWidget, "Сообщение", "Некоторые полезные команды\n"
+    "\n/help - Отображает текущее окно с подсказками"
+    "\n/connect - Программа подключается к серверу"
+    "\n/disconnect - Программа отключается от сервера к серверу"
+    "\n/set_user_name - Задает новое имя пользователя"
+    "\n/set_text_size - Задает размер текста");
 }
 
 Messanger::~Messanger()
@@ -66,9 +73,9 @@ void Messanger::sendMessageToBrowserSlot()
         return;
     }
 
-    if (textFromEdit.contains("/new_user_name"))
+    if (textFromEdit.contains("/set_user_name"))
     {
-        textFromEdit.replace("/new_user_name", "");
+        textFromEdit.replace("/set_user_name", "");
         textFromEdit.remove(' ');
 
         if (textFromEdit.size() > 9)
@@ -86,6 +93,42 @@ void Messanger::sendMessageToBrowserSlot()
         return;
     }
 
+    if (textFromEdit == "/help")
+    {
+        QMessageBox::information(informationWidget, "Сообщение", "Некоторые полезные команды\n"
+        "\n/help - Отображает текущее окно с подсказками"
+        "\n/connect - Программа подключается к серверу"
+        "\n/disconnect - Программа отключается от сервера к серверу"
+        "\n/set_user_name - Задает новое имя пользователя"
+        "\n/set_text_size - Задает размер текста");
+
+        win->clearTextEdit();
+
+        return;
+    }
+
+    if (textFromEdit.contains("/set_text_size"))
+    {
+        textFromEdit.replace("/set_text_size", "");
+        textFromEdit.remove(' ');
+
+        bool ok;
+        int new_size = textFromEdit.toInt(&ok);
+
+        if (ok)
+        {
+            win->setTextSize(new_size);
+        }
+        else
+        {
+            QMessageBox::critical(informationWidget, "Ошибка", "Что-то не так ):\n\nНе удалось задать новый размер текста");
+        }
+
+        win->clearTextEdit();
+
+        return;
+    }
+
     bool check = client->sendMessage(Messanger::messageToServer(textFromEdit));
 
     if (!check)
@@ -96,7 +139,6 @@ void Messanger::sendMessageToBrowserSlot()
     {
         QString clientName;
         QString ans = client->fromServer();
-        qDebug() << "ans from server:" << ans;
 
         parseMessage(clientName, ans);
 

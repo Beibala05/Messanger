@@ -16,6 +16,7 @@
 #include <QObject>
 #include <QFile>
 #include <QTextStream>
+#include <QFont>
 
 #define MAIN_WINDOW_WIDTH           1200
 #define MAIN_WINDOW_HEIGHT          800
@@ -34,6 +35,7 @@ public:
     QString         getTextBrowser() const;
     void            clearTextEdit();
     void            setTextBrowser(QString text);
+    void            setTextSize(int new_size);
 
 protected:
     void            resizeEvent(QResizeEvent* event) override;
@@ -44,6 +46,7 @@ private:
     QPushButton*    sendMessage;
     QLineEdit*      textEdit;
     QTextBrowser*   textBrowser;
+    QFont           font;
     Messanger*      mes;
 };
 

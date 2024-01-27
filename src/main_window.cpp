@@ -2,8 +2,6 @@
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
-    mes = new Messanger(this);
-
     QFile file(CHECK_USER_NAME_FILE_PATH);
     
     file.open(QIODevice::ReadOnly);
@@ -42,6 +40,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     QMainWindow::resize(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT);
     QMainWindow::show();
 
+    mes = new Messanger(this);
+    
     QObject::connect(sendMessage, &QPushButton::clicked, mes, &Messanger::sendMessageToBrowserSlot);
 }
 
@@ -90,4 +90,10 @@ void MainWindow::clearTextEdit()
 void MainWindow::setTextBrowser(QString text)
 {
     this->textBrowser->setText(text);
+}
+
+void MainWindow::setTextSize(int new_size)
+{
+    font.setPointSize(new_size);
+    this->textBrowser->setFont(font);
 }
