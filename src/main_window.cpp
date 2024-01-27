@@ -2,8 +2,6 @@
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
-    mes = new Messanger(this);
-
     QFile file(CHECK_USER_NAME_FILE_PATH);
     
     file.open(QIODevice::ReadOnly);
@@ -28,11 +26,12 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     textBrowser = new QTextBrowser(central_widget);
     textBrowser->setGeometry(5, 5, MAIN_WINDOW_WIDTH - 10, MAIN_WINDOW_HEIGHT - 60);
     textBrowser->setStyleSheet(styles::dialog_window_btn_green_style);
+    textBrowser->setFont(styles::fontTextBrowser);
 
     textEdit = new QLineEdit(central_widget);
     textEdit->setGeometry(5, MAIN_WINDOW_HEIGHT - 50, MAIN_WINDOW_WIDTH - 55, 40);
     textEdit->setStyleSheet(styles::dialog_window_btn_green_style);
-    textEdit->setFont(styles::font);
+    textEdit->setFont(styles::fontTextEdit);
     textEdit->setPlaceholderText("Введите текст");
 
     sendMessage = new QPushButton("=>", central_widget);
@@ -42,7 +41,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     QMainWindow::resize(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT);
     QMainWindow::show();
 
+    mes                 = new Messanger(this);
+    shortcutEnter       = new QShortcut(QKeySequence(Qt::Key_Return), sendMessage); // Нажатие на Enter
+    shortcutNumpadEnter = new QShortcut(QKeySequence(Qt::Key_Enter), sendMessage);  // Нажатие на Enter (на нампдае)
+
     QObject::connect(sendMessage, &QPushButton::clicked, mes, &Messanger::sendMessageToBrowserSlot);
+    QObject::connect(shortcutEnter, &QShortcut::activated, mes, &Messanger::sendMessageToBrowserSlot);
+    QObject::connect(shortcutNumpadEnter, &QShortcut::activated, mes, &Messanger::sendMessageToBrowserSlot);
+
 }
 
 MainWindow::~MainWindow()

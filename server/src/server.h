@@ -8,7 +8,8 @@
 #include <QString>
 #include <QVector>
 
-#define DEBUG_OFF
+// #define DEBUG_OFF
+#define PORT 2323
 
 class Server : public QTcpServer 
 {

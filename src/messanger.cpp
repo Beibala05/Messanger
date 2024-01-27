@@ -8,6 +8,13 @@ Messanger::Messanger(MainWindow* win)
     client = new Client();
     informationWidget = new QWidget();
     client->connect(); 
+
+    QMessageBox::information(informationWidget, "Команды", "Полезный команды\n"
+    "\n/help - Отображает текущее окно с подсказками"
+    "\n/clear - Очистить историю"
+    "\n/connect - Программа соединяеться с сервером"
+    "\n/disconnect - Программа отсоединяеться от сервера"
+    "\n/set_user_name - Задает новое имя пользователя (Структура: /set_user_name [new_user_name])");
 }
 
 Messanger::~Messanger()
@@ -46,6 +53,11 @@ void Messanger::sendMessageToBrowserSlot()
     QString textFromEdit    = win->getTextEdit();
     QString textFromBrowser = win->getTextBrowser();
 
+    if (textFromEdit.isEmpty())
+    {
+        return;
+    }
+
     if (textFromEdit == "/connect")
     {
         client->connect();
@@ -66,9 +78,31 @@ void Messanger::sendMessageToBrowserSlot()
         return;
     }
 
-    if (textFromEdit.contains("/new_user_name"))
+    if (textFromEdit == "/help")
     {
-        textFromEdit.replace("/new_user_name", "");
+        win->clearTextEdit();
+
+        QMessageBox::information(informationWidget, "Команды", "Полезный команды\n"
+        "\n/help - Отображает текущее окно с подсказками"
+        "\n/clear - Очистить историю"
+        "\n/connect - Программа соединяеться с сервером"
+        "\n/disconnect - Программа отсоединяеться от сервера"
+        "\n/set_user_name - Задает новое имя пользователя (Структура: /set_user_name [new_user_name])");
+
+        return;
+    }
+
+    if (textFromEdit == "/clear")
+    {
+        win->clearTextEdit();
+        win->setTextBrowser("");
+
+        return;
+    }
+
+    if (textFromEdit.contains("/set_user_name"))
+    {
+        textFromEdit.replace("/set_user_name", "");
         textFromEdit.remove(' ');
 
         if (textFromEdit.size() > 9)
@@ -81,7 +115,7 @@ void Messanger::sendMessageToBrowserSlot()
         this->userName = textFromEdit;
         win->clearTextEdit();
 
-        QMessageBox::information(informationWidget, "Сообщение", "Имя пользователя было изменено с " + oldUserName + " на " + this->userName);
+        QMessageBox::information(informationWidget, "Новое имя пользователя", "Имя пользователя изменено с " + oldUserName + " на " + this->userName);
 
         return;
     }
@@ -96,7 +130,6 @@ void Messanger::sendMessageToBrowserSlot()
     {
         QString clientName;
         QString ans = client->fromServer();
-        qDebug() << "ans from server:" << ans;
 
         parseMessage(clientName, ans);
 

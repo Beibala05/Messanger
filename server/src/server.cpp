@@ -10,7 +10,7 @@ Server::Server(QObject *parent) : QTcpServer(parent)
 
 bool Server::startServer() 
 {
-    return this->listen(QHostAddress::Any, 2323);
+    return this->listen(QHostAddress::Any, PORT);
 }
 
 void Server::incomingConnection(qintptr socketDescriptor) 

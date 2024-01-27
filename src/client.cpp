@@ -28,7 +28,7 @@ bool Client::sendMessage(const QString &message)
 
 void Client::connect()
 {
-    socket->connectToHost(ADDRESS, PORT);
+    socket->connectToHost(LOCAL_IP_ADDRESS, PORT);
 }
 
 bool Client::disconnect()

@@ -19,7 +19,8 @@ namespace styles
         "background-color: #22222e;"
         "border: 2px solid green;";
 
-    const QFont font("Montserrat", 10);
+    const QFont fontTextEdit("Montserrat", 12);
+    const QFont fontTextBrowser("Montserrat", 15);
 };
 
 #endif //STYLE

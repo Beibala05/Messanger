@@ -1,8 +1,8 @@
 #ifndef CLIENT
 #define CLIENT
 
-#define ADDRESS "127.0.0.1"
-#define PORT    2323
+#define LOCAL_IP_ADDRESS "127.0.0.1"
+#define PORT              2323
 
 #include <QTcpSocket>
 

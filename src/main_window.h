@@ -16,6 +16,8 @@
 #include <QObject>
 #include <QFile>
 #include <QTextStream>
+#include <QFont>
+#include <QShortcut>
 
 #define MAIN_WINDOW_WIDTH           1200
 #define MAIN_WINDOW_HEIGHT          800
@@ -44,6 +46,8 @@ private:
     QPushButton*    sendMessage;
     QLineEdit*      textEdit;
     QTextBrowser*   textBrowser;
+    QShortcut*      shortcutEnter;
+    QShortcut*      shortcutNumpadEnter;
     Messanger*      mes;
 };
 
